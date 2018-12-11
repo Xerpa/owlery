@@ -1,5 +1,5 @@
 {application, owlery,
- [{description, "An OTP library"},
+ [{description, "Lib para consumir o serviço de envio de emails (Hedwig)."},
   {vsn, "0.1.0"},
   {registered, []},
   {applications,
