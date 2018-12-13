@@ -1,4 +1,4 @@
--module(builder_tests).
+-module(owlery_builder_tests).
 -include_lib("eunit/include/eunit.hrl").
 
 create_request_3_test() ->
@@ -9,7 +9,7 @@ create_request_3_test() ->
       to => ["email@test.com"],
       data => #{}
     },
-    builder:create_request("Template", "Email Test", ["email@test.com"])
+    owlery_builder:create_request("Template", "Email Test", ["email@test.com"])
   ).
 
 create_request_4_test() ->
@@ -20,7 +20,7 @@ create_request_4_test() ->
       to => ["email@test.com"],
       data => #{name => "Test"}
     },
-    builder:create_request("Template", "Email Test", ["email@test.com"], #{name => "Test"})
+    owlery_builder:create_request("Template", "Email Test", ["email@test.com"], #{name => "Test"})
   ).
 
 to_json_test() ->
@@ -32,4 +32,4 @@ to_json_test() ->
   },
   Exp = jsx:encode(Request),
 
-  ?assertEqual(Exp, builder:to_json(Request)).
+  ?assertEqual(Exp, owlery_builder:to_json(Request)).

@@ -1,4 +1,4 @@
--module(builder).
+-module(owlery_builder).
 -export([create_request/3, create_request/4, to_json/1]).
 
 create_request(Template_name, Subject, To) ->

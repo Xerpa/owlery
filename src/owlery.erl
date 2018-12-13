@@ -5,5 +5,5 @@ send_email(Template_name, Subject, To) ->
     send_email(Template_name, Subject, To, []).
 
 send_email(Template_name, Subject, To, Opts) when is_list(To) and is_list(Opts) ->
-    spawn(requester, send_email_request, [Template_name, Subject, To, Opts]),
+    spawn(owlery_requester, send_email_request, [Template_name, Subject, To, Opts]),
     ok.

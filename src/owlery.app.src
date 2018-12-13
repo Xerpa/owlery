@@ -8,16 +8,8 @@
     amqp_client
    ]},
   {env,[]},
-  {modules, [
-   owlery
-  ]},
-  {files, [
-   "src",
-   "rebar.config", "rebar.lock",
-   "README.md"
-  ]},
-
-  {maintainers, []},
+  {modules, []},
+  {maintainers, ["Carlos Soteras"]},
   {licenses, ["Apache 2.0"]},
   {links, []}
  ]}.

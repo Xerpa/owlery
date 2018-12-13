@@ -1,4 +1,4 @@
--module(requester).
+-module(owlery_requester).
 -author("soteras").
 
 -export([send_email_request/4]).
@@ -6,9 +6,12 @@
 send_email_request(Template_name, Subject, To, Opts) ->
   Data = proplists:get_value(data, Opts, #{}),
   ResponsePid = proplists:get_value(response_pid, Opts),
-  Request = builder:create_request(Template_name, Subject, To, Data),
-  Json = builder:to_json(Request),
-  Response = rabbitmq:queue_message(Json),
+  QueueMessage = proplists:get_value(queue_message, Opts, fun owlery_rabbitmq:queue_message/1),
+
+  Request = owlery_builder:create_request(Template_name, Subject, To, Data),
+  Json = owlery_builder:to_json(Request),
+
+  Response = QueueMessage(Json),
 
   if
     is_pid(ResponsePid) ->
