@@ -1,4 +1,5 @@
 -module(owlery_builder_tests).
+-author("soteras").
 -include_lib("eunit/include/eunit.hrl").
 
 create_request_3_test() ->

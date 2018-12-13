@@ -1,9 +1,9 @@
 -module(owlery_rabbitmq).
-
+-author("soteras").
 -include_lib("amqp_client/include/amqp_client.hrl").
-
 -export([queue_message/1]).
 
+-spec queue_message(bitstring()) -> ok | {error, any()}.
 queue_message(RequestJson) when is_binary(RequestJson) ->
   case get_connection() of
     {ok, Connection} ->

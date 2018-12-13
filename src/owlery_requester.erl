@@ -1,8 +1,10 @@
 -module(owlery_requester).
 -author("soteras").
-
 -export([send_email_request/4]).
 
+-type opts() :: maybe_improper_list().
+
+-spec send_email_request(bitstring(), bitstring(), [bitstring()], opts()) -> ok.
 send_email_request(Template_name, Subject, To, Opts) ->
   Data = proplists:get_value(data, Opts, #{}),
   ResponsePid = proplists:get_value(response_pid, Opts),
