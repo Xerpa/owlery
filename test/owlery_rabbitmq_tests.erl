@@ -4,8 +4,8 @@
 -include_lib("eunit/include/eunit.hrl").
 -include_lib("amqp_client/include/amqp_client.hrl").
 
--define(EXCHANGE, <<"send_email">>).
--define(QUEUE, <<"send_email_request">>).
+-define(EXCHANGE, <<"send_email_test">>).
+-define(QUEUE, <<"send_email_request_test">>).
 
 setup_test_() ->
   {setup,
@@ -17,7 +17,6 @@ queue_message() ->
   Channel = get_channel(),
   ok = owlery_rabbitmq:queue_message(<<"test">>),
 
-
   Get = #'basic.get'{queue = ?QUEUE, no_ack = true},
   {#'basic.get_ok'{}, Content} = amqp_channel:call(Channel, Get),
   #'amqp_msg'{payload = Payload} = Content,
@@ -25,6 +24,8 @@ queue_message() ->
   ?assertEqual(<<"test">>, Payload).
 
 setup_queue() ->
+  application:set_env(owlery, exchange, <<"send_email_test">>),
+  application:set_env(owlery, queue_request, <<"send_email_request_test">>),
   Channel = get_channel(),
 
   ExchangeDeclare = #'exchange.declare'{exchange = ?EXCHANGE, durable = true},
