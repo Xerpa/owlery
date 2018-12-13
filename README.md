@@ -65,16 +65,16 @@ owlery:send_email(<<"basic">>, <<"Assunto Teste">>, [<<"email@test.com.br">>])
 Exemplo usando as configurações opcionais.
 
 ```erlang
-Opts = [{data, #{name => <<"My Name">>}}, {response_pid, self()}].
-owlery:send_email(<<"basic">>, <<"Assunto Teste">>, [<<"email@test.com.br">>], Opts).
+  Opts = [{data, #{name => <<"My Name">>}}, {response_pid, self()}].
+  owlery:send_email(<<"basic">>, <<"Assunto Teste">>, [<<"email@test.com.br">>], Opts).
 
-receive
-ok ->
- ...;
+  receive
+    ok ->
+      ...;
 
-{error, Error} ->
- ...
-end.
+    {error, Error} ->
+      ...
+  end.
 ```
 
 ## Configuração
