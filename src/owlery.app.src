@@ -2,14 +2,14 @@
  [{description, "Lib para consumir o serviço de envio de emails (Hedwig)."},
   {vsn, "0.1.0"},
   {registered, []},
-  {applications,
-   [kernel,
-    stdlib
+  {applications, [
+    kernel,
+    stdlib,
+    amqp_client
    ]},
   {env,[]},
   {modules, []},
-
-  {maintainers, []},
+  {maintainers, ["Carlos Soteras"]},
   {licenses, ["Apache 2.0"]},
   {links, []}
  ]}.
